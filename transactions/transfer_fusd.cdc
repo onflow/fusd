@@ -8,7 +8,7 @@
 //
 // This transaction will fail if either the sender or recipient does not have
 // an FUSD vault stored in their account. To check if an account has a vault
-// or initialize a new vault, use check_account_setup.cdc and setup_account.cdc
+// or initialize a new vault, use check_fusd_vault_setup.cdc and setup_fusd_vault.cdc
 // respectively.
 
 import FungibleToken from 0xFUNGIBLETOKENADDRESS

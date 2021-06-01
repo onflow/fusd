@@ -5,7 +5,7 @@
 //
 // This script will fail if they account does not have an FUSD vault. 
 // To check if an account has a vault or initialize a new vault, 
-// use check_account_setup.cdc and setup_account.cdc respectively.
+// use check_fusd_vault_setup.cdc and setup_fusd_vault.cdc respectively.
 
 import FungibleToken from 0xFUNGIBLETOKENADDRESS
 import FUSD from 0xFUSDADDRESS
