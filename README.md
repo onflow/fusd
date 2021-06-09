@@ -7,4 +7,4 @@ that is backed 1:1 against USD on Flow Mainnet.
 This repository contains the Cadence source code for the FUSD contract
 and accompanying transactions.
 
-You can find more information in the [FUSD documentation](https://docs.onflow.org/fusd).
+You can read more about FUSD in the [FUSD documentation](https://docs.onflow.org/fusd).
