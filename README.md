@@ -2,7 +2,7 @@
 
 Flow USD (FUSD) is a stablecoin on Flow, 
 issued by [Prime Trust](https://www.primetrust.com/), 
-that is backed 1:1 against USD on Flow Mainnet.
+that is backed 1:1 by the US Dollar on Flow Mainnet.
 
 This repository contains the Cadence source code for the FUSD contract
 and accompanying transactions.
