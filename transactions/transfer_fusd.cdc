@@ -16,7 +16,7 @@ import FUSD from 0xFUSDADDRESS
 
 transaction(amount: UFix64, to: Address) {
 
-    // The Vault resource that holds the tokens that are being transfered
+    // The Vault resource that holds the tokens that are being transferred
     let sentVault: @FungibleToken.Vault
 
     prepare(signer: AuthAccount) {
