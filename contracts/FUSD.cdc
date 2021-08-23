@@ -180,9 +180,9 @@ pub contract FUSD: FungibleToken {
         // This should be stored at a unique path in storage then a capability to it wrapped
         // in a MinterProxy to be stored in a minter account's storage.
         // This is done by the minter account running:
-        // transactions/fusd/minter/setup_minter_account.cdc
+        // transactions/fusd/minter/setup_fusd_minter.cdc
         // then the admin account running:
-        // transactions/fusd/admin/deposit_minter_capability.cdc
+        // transactions/fusd/admin/deposit_fusd_minter.cdc
         //
         pub fun createNewMinter(): @Minter {
             emit MinterCreated()
@@ -191,7 +191,7 @@ pub contract FUSD: FungibleToken {
 
     }
 
-    init(adminAccount: AuthAccount) {
+    init() {
         self.AdminStoragePath = /storage/fusdAdmin
         self.MinterProxyPublicPath = /public/fusdMinterProxy
         self.MinterProxyStoragePath = /storage/fusdMinterProxy
@@ -199,7 +199,7 @@ pub contract FUSD: FungibleToken {
         self.totalSupply = 0.0
 
         let admin <- create Administrator()
-        adminAccount.save(<-admin, to: self.AdminStoragePath)
+        self.account.save(<-admin, to: self.AdminStoragePath)
 
         // Emit an event that shows that the contract was initialized
         emit TokensInitialized(initialSupply: 0.0)
