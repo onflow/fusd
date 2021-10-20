@@ -6,5 +6,7 @@ To generate the `internal/assets` directory:
 go get -u github.com/kevinburke/go-bindata/...
 
 # generate for contracts
-go-bindata -o internal/assets/assets.go ../../../contracts
+go-bindata -o internal/assets/assets.go -prefix ../../../contracts ../../../contracts
 ```
+
+> `-prefix` strips out the paths
