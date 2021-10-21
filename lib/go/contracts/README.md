@@ -1,10 +1,7 @@
 
-To generate the `internal/assets` directory:
+To generate the `internal/assets` directory, run `go generate`.
 
+This will read your source code (`contracts.go`) and run the command:
 ```
-# install go-bindata
-go get -u github.com/kevinburke/go-bindata/...
-
-# generate for contracts
-go-bindata -o internal/assets/assets.go ../../../contracts
+//go:generate go run github.com/kevinburke/go-bindata/go-bindata -prefix ../../../contracts -o internal/assets/assets.go -pkg assets -nometadata -nomemcopy ../../../contracts
 ```
