@@ -1,0 +1,14 @@
+{
+    "1.0.0": {
+        "fusd-util-v1.0.0-arm64-linux":     "92ed9200201158e0e11dc15729bba7287982ca4f23899e0b416b79bc6d8af031",
+        "fusd-util-v1.0.0-x86_64-darwin":   "ebfdecb68d4be535a098fb068608f4801e5f04ae247fb67dffba52c042612da8",
+        "fusd-util-v1.0.0-x86_64-linux":    "35efbf2de496b21957bddb02a5098a11ee73b822d5da2cd6258f62f0d03ce3c1",
+        "fusd-util-v1.0.0-x86_64-windows":  "f8c8e66bb5198a323133409d72ee0b7a9f5ba56726885ccd2bcf6585a74cae42"
+    },
+    "2.0.0": {
+        "fusd-util-v2.0.0-arm64-linux":     "c8cabb131951dd933b42060fb896e1988bdf6ff7e0e46944246e54841d8595f1",
+        "fusd-util-v2.0.0-x86_64-darwin":   "6b06cf947d54d43b3d3b813ac4bd4c87576d89aa024e36e0bbd784ee9a8fb4b2",
+        "fusd-util-v2.0.0-x86_64-linux":    "396670a9bbcffbc51a151f8694b550e95eda84c3ebc8fa746862d79a6746665f",
+        "fusd-util-v2.0.0-x86_64-windows":  "e62c81d6082237ab227487ce03b395538fe65dc0a1f64202366be4e9654d4cb1"
+    }
+}
