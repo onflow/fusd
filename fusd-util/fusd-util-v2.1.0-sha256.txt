@@ -1,0 +1,4 @@
+53292300f33a543737684ccb591b7fc07cd037348cfad700c8c8ed9146487196  ./cmd/fusd-util/fusd-util-v2.1.0-arm64-linux
+701281f1106f110150000048784fd5c7edcd41f18da37f73a1407e15997766a5  ./cmd/fusd-util/fusd-util-v2.1.0-x86_64-darwin
+ba9807bb1e762a31b91b53175dcbcaf6ead280c2f7ac507fb1245820e449849e  ./cmd/fusd-util/fusd-util-v2.1.0-x86_64-linux
+dcbc205820b45ca0a0006becbc6ea80341dd115bed4b629c86909187b3212bd9  ./cmd/fusd-util/fusd-util-v2.1.0-x86_64-windows
