@@ -11,7 +11,7 @@ You can read more about FUSD in the [FUSD documentation](https://docs.onflow.org
 
 ## Contract Addresses
 
-|Name|Testnet|Mainnet|
-|----|-------|-------|
-|`FUSD`|`0xe223d8a629e49c68`|`0x3c5959b568896393`|
-|`FungibleToken`|`0x9a0766d93b6608b7`|`0xf233dcee88fe0abe`|
+|Name|Testnet|Mainnet|Sandboxnet|
+|----|-------|-------|----------|
+|`FUSD`|`0xe223d8a629e49c68`|`0x3c5959b568896393`|`0x6c52cbc80f034d1b`|
+|`FungibleToken`|`0x9a0766d93b6608b7`|`0xf233dcee88fe0abe`|`0xe20612a0776ca4bf`|
