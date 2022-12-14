@@ -11,8 +11,8 @@
 // or initialize a new vault, use check_fusd_vault_setup.cdc and setup_fusd_vault.cdc
 // respectively.
 
-import FungibleToken from 0xFUNGIBLETOKENADDRESS
-import FUSD from 0xFUSDADDRESS
+import FungibleToken from "../contracts/FungibleToken.cdc"
+import FUSD from "../contracts/FUSD.cdc"
 
 transaction(amount: UFix64, to: Address) {
 
@@ -21,7 +21,8 @@ transaction(amount: UFix64, to: Address) {
 
     prepare(signer: AuthAccount) {
         // Get a reference to the signer's stored vault
-        let vaultRef = signer.borrow<&FUSD.Vault>(from: /storage/fusdVault)
+        let vaultRef = signer.getCapability(/private/fusdProvider)
+            .borrow<&FUSD.Vault{FungibleToken.Provider}>()
             ?? panic("Could not borrow reference to the owner's Vault!")
 
         // Withdraw tokens from the signer's stored vault
