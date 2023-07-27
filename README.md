@@ -1,6 +1,6 @@
-# DEPRECATED
+# DEPRECATED (DO NOT USE IT)
 
-This repository exists only for historical purpose
+This repository exists only for historical purpose 
 
 Flow deprecated use of FUSD in favour or USDC
 
