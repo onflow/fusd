@@ -1,3 +1,11 @@
+# DEPRECATED (DO NOT USE IT)
+
+This repository exists only for historical purpose 
+
+Flow deprecated use of FUSD in favour or USDC
+
+Check [https://www.circle.com/en/usdc](https://www.circle.com/en/usdc) for more info.
+
 # Flow USD (FUSD)
 
 Flow USD (FUSD) is a stablecoin on Flow, 
