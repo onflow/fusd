@@ -1,4 +1,6 @@
-import FungibleToken from 0xFUNGIBLETOKENADDRESS
+import FungibleToken from "FungibleToken.cdc"
+import FungibleTokenMetadataViews from "FungibleTokenMetadataViews.cdc"
+import MetadataViews from 0xf8d6e0586b0a20c7
 
 pub contract FUSD: FungibleToken {
 
@@ -41,7 +43,7 @@ pub contract FUSD: FungibleToken {
     // out of thin air. A special Minter resource needs to be defined to mint
     // new tokens.
     //
-    pub resource Vault: FungibleToken.Provider, FungibleToken.Receiver, FungibleToken.Balance {
+    pub resource Vault: FungibleToken.Provider, FungibleToken.Receiver, FungibleToken.Balance, MetadataViews.Resolver {
 
         // holds the balance of a users tokens
         pub var balance: UFix64
@@ -79,6 +81,67 @@ pub contract FUSD: FungibleToken {
             emit TokensDeposited(amount: vault.balance, to: self.owner?.address)
             vault.balance = 0.0
             destroy vault
+        }
+
+        /// The way of getting all the Metadata Views implemented by the FUSD fungible token
+        ///
+        /// @return An array of Types defining the implemented views. This value can be used by
+        ///         developers to know which parameter to pass to the resolveView() method.
+        ///
+        pub fun getViews(): [Type] {
+            return [
+                Type<FungibleTokenMetadataViews.FTView>(),
+                Type<FungibleTokenMetadataViews.FTDisplay>(),
+                Type<FungibleTokenMetadataViews.FTVaultData>()
+            ]
+        }
+
+        /// The way of getting a Metadata View out of the FUSD fungible token
+        ///
+        /// @param view: The Type of the desired view.
+        /// @return A structure representing the requested view.
+        ///
+        pub fun resolveView(_ view: Type): AnyStruct? {
+            switch view {
+                case Type<FungibleTokenMetadataViews.FTView>():
+                    return FungibleTokenMetadataViews.FTView(
+                        ftDisplay: self.resolveView(Type<FungibleTokenMetadataViews.FTDisplay>()) as! FungibleTokenMetadataViews.FTDisplay?,
+                        ftVaultData: self.resolveView(Type<FungibleTokenMetadataViews.FTVaultData>()) as! FungibleTokenMetadataViews.FTVaultData?
+                    )
+                case Type<FungibleTokenMetadataViews.FTDisplay>():
+                    let media = MetadataViews.Media(
+                        file: MetadataViews.HTTPFile(
+                            url: "https://global-uploads.webflow.com/60f008ba9757da0940af288e/6141ac940d6edec559d7f959_aAZ9V3yL_400x400.jpeg"
+                        ),
+                        mediaType: "image/jpeg"
+                    )
+                    let medias = MetadataViews.Medias([media])
+                    return FungibleTokenMetadataViews.FTDisplay(
+                        name: "Flow USD Fungible Token",
+                        symbol: "FUSD",
+                        description: "Flow USD (FUSD) is a stablecoin on Flow, issued by Prime Trust, that is backed 1:1 by the US Dollar on Flow Mainnet.",
+                        externalURL: MetadataViews.ExternalURL("https://developers.flow.com/flow/fusd"),
+                        logos: medias,
+                        socials: {
+                            "twitter": MetadataViews.ExternalURL("https://twitter.com/flow_blockchain")
+                        }
+                    )
+                case Type<FungibleTokenMetadataViews.FTVaultData>():
+                    return FungibleTokenMetadataViews.FTVaultData(
+                        storagePath: /storage/fusdVault,
+                        receiverPath: /public/fusdReceiver,
+                        metadataPath: /public/fusdMetadata,
+                        providerPath: /private/fusdProvider,
+                        receiverLinkedType: Type<&FUSD.Vault{FungibleToken.Receiver}>(),
+                        metadataLinkedType: Type<&FUSD.Vault{FungibleToken.Balance, MetadataViews.Resolver}>(),
+                        providerLinkedType: Type<&FUSD.Vault{FungibleToken.Provider}>(),
+                        createEmptyVaultFunction: (fun (): @FUSD.Vault {
+                            return <-FUSD.createEmptyVault()
+                        })
+                    )
+            }
+
+            return nil
         }
 
         destroy() {

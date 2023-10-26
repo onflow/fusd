@@ -1,0 +1,46 @@
+{
+  "emulators": {
+    "default": {
+        "port": 3569,
+        "serviceAccount": "emulator-account"
+    }
+  },
+  "contracts": {
+    "FungibleToken": "./contracts/FungibleToken.cdc",
+    "FungibleTokenMetadataViews": "./contracts/FungibleTokenMetadataViews.cdc",
+    "FUSD": "./contracts/FUSD.cdc"
+  },
+  "networks": {
+    "emulator": "127.0.0.1:3569",
+    "mainnet": "access.mainnet.nodes.onflow.org:9000",
+    "sandboxnet": "access.sandboxnet.nodes.onflow.org:9000",
+    "testnet": "access.devnet.nodes.onflow.org:9000"
+  },
+  "accounts": {
+    "emulator-account": {
+      "address": "f8d6e0586b0a20c7",
+      "key": "2acf0af32a490123aed7a71a6abdafe5ec867996c9b38f6a03be815433b2ae3c"
+    },
+    "fusd-account": {
+      "address": "0x01cf0e2f2f715450",
+      "key": "880baab347cfe2e0cfd30ed9b5bd31b36ab3c6142481a420240964767e3e0c14"
+    },
+    "minter-account": {
+      "address": "0x179b6b1cb6755e31",
+      "key": "81dd45d2c1092932e4d54fbfb7a7f0975c2b17886a8e603e1f3ad6d774613ea3"
+    },
+    "recipient-account": {
+      "address": "0xf3fcd2c1a78f5eee",
+      "key": "1edc051d30c00b97fe5c45625dcebf78242a9c740ee79e5664ec49c2329c382f"
+    }
+  },
+  "deployments": {
+    "emulator": {
+      "fusd-account": [
+        "FungibleToken",
+        "FungibleTokenMetadataViews",
+        "FUSD"
+      ]
+    }
+  }
+}

@@ -11,7 +11,7 @@
 // an FUSD.MinterProxy resource. Use the setup_fusd_minter.cdc transaction to 
 // create a minter proxy in the minter account.
 
-import FUSD from 0xFUSDADDRESS
+import FUSD from "../../contracts/FUSD.cdc"
 
 transaction(minterAddress: Address) {
 
@@ -22,8 +22,8 @@ transaction(minterAddress: Address) {
     prepare(adminAccount: AuthAccount) {
 
         // These paths must be unique within the FUSD contract account's storage
-        self.resourceStoragePath = /RESOURCESTORAGEPATH     // e.g. /storage/minter_01
-        self.capabilityPrivatePath = /CAPABILITYPRIVATEPATH // e.g. private/minter_01
+        self.resourceStoragePath = /storage/admin_minter     // e.g. /storage/minter_01
+        self.capabilityPrivatePath = /private/admin_minter // e.g. /private/minter_01
 
         // Create a reference to the admin resource in storage.
         let tokenAdmin = adminAccount.borrow<&FUSD.Administrator>(from: FUSD.AdminStoragePath)

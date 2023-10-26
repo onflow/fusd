@@ -8,8 +8,8 @@
 // Parameters:
 // - address: The address of the account to check.
 
-import FungibleToken from 0xFUNGIBLETOKENADDRESS
-import FUSD from 0xFUSDADDRESS
+import FungibleToken from "../../contracts/FungibleToken.cdc"
+import FUSD from "../../contracts/FUSD.cdc"
 
 pub fun main(address: Address): Bool {
     let account = getAccount(address)
@@ -18,7 +18,7 @@ pub fun main(address: Address): Bool {
         .borrow<&FUSD.Vault{FungibleToken.Receiver}>()
         ?? nil
 
-    let balanceRef = account.getCapability(/public/fusdBalance)!
+    let balanceRef = account.getCapability(/public/fusdMetadata)!
         .borrow<&FUSD.Vault{FungibleToken.Balance}>()
         ?? nil
 
